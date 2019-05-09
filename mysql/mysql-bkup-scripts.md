@@ -3,8 +3,9 @@
 mysql backup script:
 
 ```
-DB_USER=""							# better to use $ENV_DB_USERNAME
-DB_PASSWD=""						# better to use $ENV_DB_PASSWORD
+# better to use $ENV_DB_USERNAME / $ENV_DB_PASSWORD
+DB_USER=""							
+DB_PASSWD=""						
 
 DB_NAME="test"
 TABLE_NAME="test_userasset"
