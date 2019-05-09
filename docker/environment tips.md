@@ -22,3 +22,25 @@ container都用默认端口。
 
 例如多个mysql实例，分别映射到HOST的3306, 3307, 3308, ...
 
+
+
+## 环境变量
+
+既可以用 -e 直接一个一个设定环境变量，也可以用 --env-file，从文件里读取
+
+```
+# 直接设定
+docker run -d -t -i -e REDIS_NAMESPACE='staging' \ 
+-e POSTGRES_ENV_POSTGRES_PASSWORD='foo' \
+-e POSTGRES_ENV_POSTGRES_USER='bar' \
+-e POSTGRES_ENV_DB_NAME='mysite_staging' \
+-e POSTGRES_PORT_5432_TCP_ADDR='docker-db-1.hidden.us-east-1.rds.amazonaws.com' \
+-e SITE_URL='staging.mysite.com' \
+-p 80:80 \
+--link redis:redis \  
+--name container_name dockerhub_id/image_name
+
+# 从文件读取
+docker run --env-file ./env.list ubuntu bash
+```
+
